@@ -1,0 +1,37 @@
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,200;1,400&display=swap" rel="stylesheet">
+<ion-app>
+  <ion-content contentId="content">
+    <ion-list>
+      <ion-card *ngFor="let post of posts; let i = index" class="container" >
+        <ion-card-header>
+          <ion-item routerLink="/profile/{{post.username}}" lines="none">
+            <ion-avatar slot="start">
+              <img *ngIf="!post.profilepic" class="profile-pic" src="https://cdn-icons-png.flaticon.com/128/847/847969.png?{{getTimeStamp()}}">
+              <img *ngIf="post.profilepic" class="profile-pic" src="https://ubaya.fun/hybrid/160419015/Project_UAS/images/{{post.profilepic}}?{{getTimeStamp()}}">
+            </ion-avatar>
+            <ion-card-subtitle class="usernameTextSize">{{post.username}}</ion-card-subtitle>
+          </ion-item>
+        </ion-card-header>
+        <ion-card-content routerLink="/detailpost/{{post.id}}" class="images">
+          <ion-img src="https://ubaya.fun/hybrid/160419015/Project_UAS/images/{{post.image}}"></ion-img>
+        </ion-card-content>
+        <ion-card-subtitle>
+          <ion-label class="date" position = "stacked">{{post.date}}</ion-label>
+          <ion-label class="like">
+            <ion-icon *ngIf="status[post.id] == 0" name="heart-outline" (click) = "likeClicked(post.id, status[post.id])"></ion-icon>
+            <ion-icon *ngIf="status[post.id] == 1" name="heart" (click) = "likeClicked(post.id, status[post.id])"></ion-icon>
+            <ion-card-subtitle class="text">{{likes[post.id]}} likes</ion-card-subtitle>
+          </ion-label>
+        </ion-card-subtitle> 
+        <ion-card-header>
+          <ion-card-title>{{post.title}}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-list>
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+      <ion-fab-button size="large" routerLink="/addpost">
+        <ion-icon name="add-outline" class="fab"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-content>
+</ion-app>

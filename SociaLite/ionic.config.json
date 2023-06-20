@@ -1,0 +1,7 @@
+{
+  "name": "SociaLite",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

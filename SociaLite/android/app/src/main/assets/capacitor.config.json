@@ -1,0 +1,6 @@
+{
+	"appId": "com.ubaya.socialite",
+	"appName": "SociaLite",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

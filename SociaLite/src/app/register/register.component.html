@@ -1,0 +1,31 @@
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,200;1,400&display=swap" rel="stylesheet">
+<ion-app>
+  <ion-header>
+    <ion-item>
+      <ion-buttons (click)="goBack()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-buttons>
+      <ion-title class="appTitle">SociaLite</ion-title>
+    </ion-item>
+  </ion-header>
+  <ion-content>
+    <ion-item class="loginInfo">
+      <ion-input name="email" type="email" placeholder="Email (required)" [(ngModel)]='email' required>
+      </ion-input>
+    </ion-item>
+    <ion-item class="loginInfo">
+      <ion-input name="name" type="text" placeholder="Full Name (required)" [(ngModel)]='name' required>
+      </ion-input>
+    </ion-item>
+    <ion-item class="loginInfo"> 
+      <ion-input name="username" type="text" placeholder="Username (required)" [(ngModel)]='username' required>
+      </ion-input>
+    </ion-item>
+    <ion-item class="loginInfo">
+      <ion-icon slot="end" [name]="passwordIcon" (click)='hideShowPassword()' style="font-size: 16px;"></ion-icon>
+      <ion-input name="password" [type]="passwordType" placeholder="Password (required)" [(ngModel)]='password' required>
+      </ion-input>
+    </ion-item>
+    <ion-button class="buttonRegister" type="submit" expand="block" size="small" (click)='register()'>REGISTER</ion-button>
+  </ion-content>
+</ion-app>

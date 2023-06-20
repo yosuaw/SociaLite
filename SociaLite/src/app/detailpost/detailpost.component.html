@@ -1,0 +1,96 @@
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,200;1,400&display=swap" rel="stylesheet">
+<ion-app>
+  <ion-content>
+    <ion-card>
+      <ion-card-header>
+        <ion-item routerLink="/profile/{{username}}"  lines="none">
+          <ion-avatar slot="start">
+            <img *ngIf="!profileUrl" class="profile-pic" src="https://cdn-icons-png.flaticon.com/128/847/847969.png?{{getTimeStamp()}}">
+            <img *ngIf="profileUrl" class="profile-pic" src="https://ubaya.fun/hybrid/160419015/Project_UAS/images/{{profileUrl}}?{{getTimeStamp()}}">
+          </ion-avatar>
+          <ion-card-subtitle id="postUser">{{username}}</ion-card-subtitle>
+        </ion-item>
+      </ion-card-header>
+      <ion-card-content class="images">
+        <ion-img src="https://ubaya.fun/hybrid/160419015/Project_UAS/images/{{imgUrl}}"></ion-img>
+      </ion-card-content>
+      <ion-card-subtitle>
+        <ion-label class="date" position = "stacked">{{date}}</ion-label>
+        <ion-label class="like">
+          <ion-icon class="icon-like" *ngIf="status == 0" name="heart-outline" (click) = "likeClicked(id, status)"></ion-icon>
+          <ion-icon class="icon-like" *ngIf="status == 1" name="heart" (click) = "likeClicked(id, status)"></ion-icon>
+          <ion-card-subtitle class="text">{{likes}} likes</ion-card-subtitle>
+        </ion-label>
+      </ion-card-subtitle> 
+      <ion-card-header>
+        <ion-card-title>{{title}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-header>
+        <ion-card-subtitle>{{caption}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-header></ion-header>
+      <ion-list>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img class="profile-pic" src="https://ubaya.fun/hybrid/160419015/Project_UAS/images/{{loggedUser}}.jpg?{{getTimeStamp()}}">
+          </ion-avatar>
+          <ion-input [(ngModel)]="newcomment" type="text" mode="ios" clearInput="true" autofocus="true" placeholder="Add a comment..."></ion-input>
+          <ion-icon class="icon-send" name="send" (click)=addComment()></ion-icon>
+        </ion-item>
+        <ion-list lines="none">
+          <ion-card *ngFor="let comm of comments; let i = index">
+            <ion-item>
+              <ion-avatar slot="start">
+                <img class="profile-pic" src="https://ubaya.fun/hybrid/160419015/Project_UAS/images/{{comm.username}}.jpg?{{getTimeStamp()}}">
+              </ion-avatar>
+              <h5>{{comm.name}}</h5>
+            </ion-item>
+            <ion-card class="commentContent">
+              <p style="font-size: 15px;">{{comm.comment}}</p>
+              <span>{{comm.username}}</span>
+              <span *ngIf="replyStatus[comm.idcomment]==0" (click)=replyComment(comm.idcomment) class="reply">REPLY
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </span>
+              <span *ngIf="replyStatus[comm.idcomment]==1" (click)=replyComment(comm.idcomment) class="reply">REPLY
+                <ion-icon name="chevron-up-outline"></ion-icon>
+              </span>
+              <!-- <span *ngIf="replyStatus[i] == 1" (click)=replyComment(i) class="reply">REPLY
+                <ion-icon name="chevron-up-outline"></ion-icon>
+              </span> -->
+            </ion-card>
+            <ion-grid *ngIf="replyStatus[comm.idcomment] == 1">
+              <ion-row *ngFor="let rep of comm.reply; let j = index">
+                <ion-col size="1"></ion-col>
+                <ion-col>
+                  <ion-item>
+                    <ion-avatar slot="start">
+                      <img class="profile-pic" src="https://ubaya.fun/hybrid/160419015/Project_UAS/images/{{rep.username}}.jpg?{{getTimeStamp()}}">
+                    </ion-avatar>
+                    <h5>{{rep.name}}</h5>
+                  </ion-item>
+                  <ion-card class="commentContent">
+                    <p style="font-size: 15px;">{{rep.reply}}</p>
+                    <span>{{rep.username}}</span>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="1"></ion-col>
+                <ion-col>
+                  <ion-item>
+                    <ion-avatar slot="start">
+                      <img class="profile-pic" src="https://ubaya.fun/hybrid/160419015/Project_UAS/images/{{loggedUser}}.jpg?{{getTimeStamp()}}">
+                    </ion-avatar>
+                    <ion-input [(ngModel)]="newreply" type="text" mode="ios" clearInput="true" autofocus="true" placeholder="Add a reply...">
+                    </ion-input>
+                    <ion-icon class="icon-send" name="send" (click)="addReply(i, comm.idcomment)"></ion-icon>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card>
+        </ion-list>
+      </ion-list>
+    </ion-card>
+  </ion-content>
+</ion-app>

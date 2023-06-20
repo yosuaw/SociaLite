@@ -1,0 +1,66 @@
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,200;1,400&display=swap" rel="stylesheet">
+<ion-app>
+  <ion-content>
+    <ion-avatar>
+      <img *ngIf="image" src="https://ubaya.fun/hybrid/160419015/Project_UAS/images/{{image}}?{{getTimeStamp()}}">
+      <img *ngIf="!image" src="https://cdn-icons-png.flaticon.com/128/847/847969.png?{{getTimeStamp()}}">
+    </ion-avatar>
+    <ion-list mode = "ios" lines = "none">
+      <ion-item> 
+          <ion-icon name="person-circle" slot="start" class="icon-profile"></ion-icon> 
+          <ion-list class="classList">
+            <ion-label class="label-gray">Username</ion-label>
+            <ion-label class="isi">{{username}}</ion-label>
+          </ion-list>
+      </ion-item>
+      <ion-item> 
+        <ion-icon name="person" slot="start" class="icon-profile"></ion-icon> 
+        <ion-list class="classList">
+          <ion-label class="label-gray">Name</ion-label>
+          <ion-label text-wrap class="isi">{{name}}</ion-label>
+        </ion-list>
+      </ion-item>
+      <ion-item> 
+        <ion-icon name="mail" slot="start" class="icon-profile"></ion-icon> 
+        <ion-list class="classList">
+          <ion-label class="label-gray">Email</ion-label>
+          <ion-label text-wrap class="isi">{{email}}</ion-label>
+        </ion-list>
+      </ion-item>
+      <ion-item> 
+        <ion-icon name="document" slot="start" class="icon-profile"></ion-icon> 
+        <ion-list class="classList">
+          <ion-label class="label-gray">Biodata</ion-label>
+          <ion-label text-wrap class="isi" *ngIf="bio">{{bio}}</ion-label>
+          <ion-label text-wrap class="isi" *ngIf="!bio">-</ion-label>
+        </ion-list>
+      </ion-item>
+    </ion-list>
+    <ion-list-header lines="full">
+      <ion-icon name="apps" class="icon-post"></ion-icon>
+      <h1>Post from this user</h1>
+    </ion-list-header>
+    <ion-list *ngIf="existPost">
+      <ion-card *ngFor="let post of posts; let i = index" class="container">
+        <ion-card-content class="images">
+          <ion-icon *ngIf="post.username == loggedUser" name="ellipsis-horizontal" id="threeDotIcon" (click)="CreatePopover(post.id, i)"></ion-icon>
+          <ion-img src="https://ubaya.fun/hybrid/160419015/Project_UAS/images/{{post.image}}" routerLink="/detailpost/{{post.id}}"></ion-img>
+        </ion-card-content>
+        <ion-card-subtitle>
+          <ion-label class="date" position = "stacked">{{post.date}}
+          </ion-label>
+          <ion-label class="like">
+            <ion-icon *ngIf="status[post.id] == 0" name="heart-outline" (click) = "likeClicked(post.id, status[post.id])" class="icon-like"></ion-icon>
+            <ion-icon *ngIf="status[post.id] == 1" name="heart" (click) = "likeClicked(post.id, status[post.id])" class="icon-like"></ion-icon>
+            <ion-card-subtitle class="text">{{likes[post.id]}} likes</ion-card-subtitle>
+          </ion-label>
+        </ion-card-subtitle> 
+        <ion-card-header>
+          <ion-card-title>{{post.title}}
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-list>
+    <ion-title *ngIf="!existPost" class="no-post">No post have been added yet</ion-title>
+  </ion-content>
+</ion-app>

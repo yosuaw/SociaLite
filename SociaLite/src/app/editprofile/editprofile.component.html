@@ -1,0 +1,53 @@
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,200;1,400&display=swap" rel="stylesheet">
+<ion-app>
+  <ion-content>
+    <center>
+      <ion-avatar (click) = "ambilFoto()">
+          <img src="{{image}}" style="display: inline;" class="profpic"/>
+          <ion-label class="text-photo">  
+            <p style="color: black;" *ngIf="!status">Take Photo</p><p style="color: black;" *ngIf="status">Change Photo</p>
+            <ion-icon name="camera"></ion-icon>
+          </ion-label>  
+      </ion-avatar>   
+    </center>
+    <ion-list mode = "ios" lines = "none">
+      <ion-item text-wrap> 
+          <ion-icon name="person-circle" slot="start" class="icon-profile"></ion-icon> 
+          <ion-list>
+            <ion-label class="label-gray">Username</ion-label>
+            <ion-input class="isi" type="text" readonly=true>{{username}}</ion-input>
+          </ion-list>
+      </ion-item>
+      <ion-item text-wrap> 
+        <ion-icon name="key" slot="start" class="icon-profile"></ion-icon> 
+        <ion-icon slot="end" [name]="passwordIcon" (click)='hideShowPassword()' style="font-size: 16px;"></ion-icon>
+        <ion-list>
+          <ion-label class="label-gray">Password</ion-label>
+          <ion-input class="isi" [type]="passwordType" placeholder="Your password" [(ngModel)]='password'></ion-input>
+        </ion-list>
+      </ion-item>
+      <ion-item text-wrap> 
+        <ion-icon name="person" slot="start" class="icon-profile"></ion-icon> 
+        <ion-list>
+          <ion-label class="label-gray">Name</ion-label>
+          <ion-input class="isi" type="text" placeholder="Your name" [(ngModel)]='name'></ion-input>
+        </ion-list>
+      </ion-item>
+      <ion-item text-wrap> 
+        <ion-icon name="mail" slot="start" class="icon-profile"></ion-icon> 
+        <ion-list>
+          <ion-label class="label-gray">Email</ion-label>
+          <ion-input class="isi" type="text" placeholder="Your email" [(ngModel)]='email'></ion-input>
+        </ion-list>
+      </ion-item>
+      <ion-item text-wrap> 
+        <ion-icon name="document" slot="start" class="icon-profile"></ion-icon> 
+        <ion-list>
+          <ion-label class="label-gray">Biodata</ion-label>
+          <ion-textarea class="isi" placeholder="Your biodata" [(ngModel)]='bio'></ion-textarea>
+        </ion-list>
+      </ion-item>
+    </ion-list>
+    <ion-button (click)="editProfile()" expand="block">Save</ion-button>
+  </ion-content>
+</ion-app>

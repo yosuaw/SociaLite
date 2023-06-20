@@ -1,0 +1,18 @@
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,200;1,400&display=swap" rel="stylesheet">
+<ion-app>
+  <ion-content fullscreen>
+    <ion-searchbar placeholder = "Find User" [(ngModel)] = "searchTerm" showCancelButton = "focus" animated debounce = 100 mode = "ios"></ion-searchbar>
+    <ion-list>
+      <ion-item *ngFor="let user of listUser | filter:searchTerm" routerLink = "/profile/{{user.username}}">
+        <ion-avatar slot="start">
+          <img *ngIf="user.image" src="https://ubaya.fun/hybrid/160419015/Project_UAS/images/{{user.image}}?{{getTimeStamp()}}">
+          <img *ngIf="!user.image" src="https://cdn-icons-png.flaticon.com/128/847/847969.png?{{getTimeStamp()}}">
+        </ion-avatar>
+        <ion-label>
+          <h3>{{user.username}}</h3>
+          <p>{{user.name}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-app>

@@ -1,0 +1,74 @@
+ion-item {
+    margin-left: 10px;
+}
+ion-avatar  {     
+    border-radius: 50%;
+    margin: 30px auto 20px auto;
+    width:100%;  
+    height : 100%;  
+    max-width: 140px; 
+    max-height: 140px;
+}
+ion-avatar img {
+    max-width: 140px; 
+    max-height: 140px;
+    border-radius: 50%;
+}
+.icon-profile {
+    font-size: 30px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+ion-item {
+    margin-right: 36px;
+    margin-bottom: 20px;
+}
+.label-gray {
+    font-size: 12px;
+    color: grey;
+}
+.isi {
+    font-size: 16px;
+}
+ion-card-subtitle {
+    min-height: 10px;
+}
+.date {
+    float: right;
+    margin-top: -15px;
+}
+.like {
+    float: left;
+    margin-top: -8px;
+    margin-left: 16px;
+}
+.icon-like {
+    font-size: 24px;
+    color: red;
+}
+.text {
+    margin-top: -24.5px;
+    margin-left: 30px;
+}
+.icon-post {
+    margin-top: 10px;
+    margin-right: 10px;
+    font-size: 24px;
+}
+.no-post {
+    text-align: center;
+    color: grey;
+    margin-bottom: 25px;
+}
+.classList {
+    margin-left: 35px;
+}
+#threeDotIcon {
+    font-size: 25px;
+    margin-bottom: 15px;
+    float: right;
+}
+* {
+    font-family: 'Raleway', 'sans-serif';
+}

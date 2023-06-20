@@ -1,0 +1,20 @@
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,200;1,400&display=swap" rel="stylesheet">
+<ion-content>
+  <ion-card>
+    <ion-card-content class="images">
+      <ion-img src="https://ubaya.fun/hybrid/160419015/Project_UAS/images/{{imgUrl}}"></ion-img>
+    </ion-card-content>
+    <ion-card-subtitle>
+      <ion-label class="date" position = "stacked">{{date}}</ion-label>
+    </ion-card-subtitle> 
+  </ion-card>
+  <ion-item>
+    <ion-label position="stacked">Title</ion-label>
+    <ion-input name="title" [(ngModel)]="title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Caption</ion-label>   
+    <ion-textarea name="caption" [(ngModel)]="caption"></ion-textarea>
+  </ion-item>
+  <ion-button (click)="editPost()" expand="block">Save</ion-button>
+</ion-content>

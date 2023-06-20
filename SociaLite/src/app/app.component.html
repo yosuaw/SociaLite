@@ -1,0 +1,48 @@
+
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,200;1,400&display=swap" rel="stylesheet">
+<ion-app>
+  <ion-header *ngIf="username">
+    <ion-toolbar id="toolbar" color= "primary">
+      <ion-buttons slot="start">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="fontGlobal">SociaLite</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-menu contentId="content" color="primary" class="fontGlobal" *ngIf="username">  
+    <ion-header>
+      <ion-toolbar>
+        <ion-title class="fontGlobal">Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-menu-toggle (click)="openMenu()">
+        <ion-list>
+          <ion-item>
+            <ion-icon name="home" slot="start"></ion-icon> 
+            <ion-label routerLink='/post' class="fontGlobal">Home</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="search" slot="start"></ion-icon> 
+            <ion-label routerLink='/find' class="fontGlobal">Find</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="people" slot="start"></ion-icon> 
+            <ion-label routerLink='/profile/{{username}}' class="fontGlobal">Profile</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="create" slot="start"></ion-icon> 
+            <ion-label routerLink='/editprofile' class="fontGlobal">Edit Profile</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="log-in" slot="start"></ion-icon> 
+            <ion-label (click)='logout()' class="fontGlobal">Log Out</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-menu-toggle>
+    </ion-content>
+  </ion-menu>
+  <ion-content>
+    <router-outlet id="content"></router-outlet>
+  </ion-content>  
+</ion-app>

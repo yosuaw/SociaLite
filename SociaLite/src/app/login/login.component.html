@@ -1,0 +1,21 @@
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,200;1,400&display=swap" rel="stylesheet">
+<ion-app>
+  <ion-header>
+    <ion-title class="appTitle">SociaLite</ion-title>
+  </ion-header>
+  <ion-content>
+    <ion-item class="loginInfo"> 
+      <ion-input name="username" type="text" placeholder="Username" [(ngModel)]='username'>
+      </ion-input>
+    </ion-item>
+    <ion-item class="loginInfo">
+      <ion-icon slot="end" [name]="passwordIcon" (click)='hideShowPassword()' style="font-size: 16px;"></ion-icon>
+      <ion-input name="password" [type]="passwordType" placeholder="Password" [(ngModel)]='password'>
+      </ion-input>
+    </ion-item>
+    <ion-button class="buttonLogin" type="submit" expand="block" size="small" (click)='login()'>LOGIN</ion-button>
+    <ion-item lines='none'>
+      <center class="signUpTitle">Dont have account?<a (click)='goRegister()'> Sign up</a></center>
+    </ion-item>
+  </ion-content>
+</ion-app>
